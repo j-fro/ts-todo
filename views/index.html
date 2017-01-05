@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TS Todo</title>
+        <script src="scripts/angular.min.js"></script>
+        <script src="scripts/client.js"></script>
+    </head>
+    <body ng-app="app">
+        <div ng-controller="TaskController">
+            <h1>TS Todo</h1>
+            <input type="text" placeholder="Task Name" ng-model="taskNameIn">
+            <button type="button" ng-click="addTask()">Add Task</button>
+            <ul>
+                <li ng-repeat="task in tasks">
+                    {{ task.name }}
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
