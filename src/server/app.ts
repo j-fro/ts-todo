@@ -65,11 +65,10 @@ function queryTasks(): Promise<Array<Task>> {
                 reject(err);
             } else {
                 client.query('SELECT * FROM todos').then((result) => {
-                    tasks = result.rows.reduce((tasks, row) => {
+                    resolve(result.rows.reduce((tasks, row) => {
                         tasks.push(new Task(row.id, row.name, row.complete));
                         return tasks
-                    }, Array<Task>());
-                    resolve(tasks);
+                    }, Array<Task>()));
                 }).catch((err) => {
                     reject(err);
                 });
