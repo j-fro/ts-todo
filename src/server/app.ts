@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../views/index.html'));
 });
 
+app.get('/getTasks', (req, res) => {
+    res.send(tasks);
+})
+
 app.post('/addTask', (req, res) => {
     console.log('Adding task:', req.body);
     tasks.push(new Task(0, req.body.name, false));

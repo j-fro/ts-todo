@@ -5,6 +5,12 @@ let app = angular.module('app', []);
 app.controller('TaskController', ['$scope', '$http', ($scope, $http) => {
     console.log('ng');
     $scope.tasks = [];
+    $http.get('/getTasks').then((response) => {
+        $scope.tasks = response.data;
+    }, (response) => {
+        console.log('Error from server', response);
+    });
+    
     $scope.addTask = () => {
         console.log('Adding task:', $scope.taskNameIn);
         $http.post('/addTask', {
@@ -16,6 +22,6 @@ app.controller('TaskController', ['$scope', '$http', ($scope, $http) => {
             console.log('Error from server', response);
         });
     }
-}])
+}]);
 
 console.log("ts");
