@@ -14,8 +14,6 @@ class Task {
     constructor(private id: number, public name: string, public complete: boolean) {}
 }
 
-let tasks = Array<Task>();
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../views/index.html'));
 });
